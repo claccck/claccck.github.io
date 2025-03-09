@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.lfalc.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"remove","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="永磁直流电动机的设计计算程序与算例（该算例给出了永磁直流电机电磁设计的一般方法，但不是最佳设计）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="永磁直流电机设计">
+<meta property="og:url" content="http://www.lfalc.com/2025/03/03/25030303/index.html">
+<meta property="og:site_name" content="百草园">
+<meta property="og:description" content="永磁直流电动机的设计计算程序与算例（该算例给出了永磁直流电机电磁设计的一般方法，但不是最佳设计）">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-03T05:13:11.000Z">
+<meta property="article:modified_time" content="2025-03-09T05:14:39.001Z">
+<meta property="article:author" content="claccck">
+<meta property="article:tag" content="-motor -永磁直流电机">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.lfalc.com/2025/03/03/25030303/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.lfalc.com/2025/03/03/25030303/","path":"2025/03/03/25030303/","title":"永磁直流电机设计"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>永磁直流电机设计 | 百草园</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      
+      <p class="site-title">百草园</p>
+      
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.lfalc.com/2025/03/03/25030303/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="claccck">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="百草园">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="永磁直流电机设计 | 百草园">
+      <meta itemprop="description" content="永磁直流电动机的设计计算程序与算例（该算例给出了永磁直流电机电磁设计的一般方法，但不是最佳设计）">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          永磁直流电机设计
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-03-03 13:13:11" itemprop="dateCreated datePublished" datetime="2025-03-03T13:13:11+08:00">2025-03-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-03-09 13:14:39" itemprop="dateModified" datetime="2025-03-09T13:14:39+08:00">2025-03-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/motor/" itemprop="url" rel="index"><span itemprop="name">-motor</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">永磁直流电动机的设计计算程序与算例（该算例给出了永磁直流电机电磁设计的一般方法，但不是最佳设计）</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="永磁直流电机设计"><a href="#永磁直流电机设计" class="headerlink" title="永磁直流电机设计"></a>永磁直流电机设计</h1><h2 id="一，额定数据"><a href="#一，额定数据" class="headerlink" title="一，额定数据"></a>一，额定数据</h2><p>$P_N$–额定功率（W）</p>
+<p>$U_N$–额定电压（V）</p>
+<p>$n_N$–额定转速（r&#x2F;min）</p>
+<p>$I_N$–额定电流（A）</p>
+<p>$T_{st}^*N$–起动转矩倍数</p>
+<h2 id="二，主要尺寸及永磁体尺寸选择"><a href="#二，主要尺寸及永磁体尺寸选择" class="headerlink" title="二，主要尺寸及永磁体尺寸选择"></a>二，主要尺寸及永磁体尺寸选择</h2><h3 id="1，额定效率（-）"><a href="#1，额定效率（-）" class="headerlink" title="1，额定效率（%）"></a>1，额定效率（%）</h3><p>$$\eta_N&#x3D;\frac{P_N}{U_NI_N}\times100$$</p>
+<h3 id="2，计算功率（W）"><a href="#2，计算功率（W）" class="headerlink" title="2，计算功率（W）"></a>2，计算功率（W）</h3><p>$$P’&#x3D;\left(\frac{1&#x3D;2\eta_N&#x2F;100}{3\eta_N&#x2F;100}\right)P_N$$</p>
+<h3 id="3，感应电动势初算（V）"><a href="#3，感应电动势初算（V）" class="headerlink" title="3，感应电动势初算（V）"></a>3，感应电动势初算（V）</h3><p>$$E_\alpha&#x3D;\left(\frac{1+2\eta_N&#x2F;100}{3}\right)U_N$$</p>
+<h3 id="4，极对数"><a href="#4，极对数" class="headerlink" title="4，极对数"></a>4，极对数</h3><p>P</p>
+<h3 id="5，永磁材料类型"><a href="#5，永磁材料类型" class="headerlink" title="5，永磁材料类型"></a>5，永磁材料类型</h3><p>铁氧体，铝镍钴永磁体，稀土永磁体</p>
+<h3 id="6，预计工作温度（摄氏度）"><a href="#6，预计工作温度（摄氏度）" class="headerlink" title="6，预计工作温度（摄氏度）"></a>6，预计工作温度（摄氏度）</h3><p>t</p>
+<h3 id="7，工作温度时永磁体的剩磁密度（T）"><a href="#7，工作温度时永磁体的剩磁密度（T）" class="headerlink" title="7，工作温度时永磁体的剩磁密度（T）"></a>7，工作温度时永磁体的剩磁密度（T）</h3><p>$$B_r&#x3D;\left[1+\left(t-20\right)\frac{\alpha_{Br}}{100}\right]\times\left(1-\frac{IL}{100}H_{c20}\right)$$</p>
+<p>式中：</p>
+<p>$B_{r20}$–永磁体剩磁密度（T）</p>
+<p>$\alpha_{Br}$–$B_{r20}$的温度系数（$%K^{-1}$）</p>
+<p>$IL$–$B_{r20}$的不可逆损失率（%）</p>
+<h3 id="8，工作温度时永磁体的矫顽力（KA-m）"><a href="#8，工作温度时永磁体的矫顽力（KA-m）" class="headerlink" title="8，工作温度时永磁体的矫顽力（KA&#x2F;m）"></a>8，工作温度时永磁体的矫顽力（KA&#x2F;m）</h3><p>$$H_c&#x3D;\left[1+\left(t-20\right)\frac{\alpha_{Br}}{100}\right]\times\left(1-\frac{IL}{100}\right)H_{c20}$$</p>
+<p>式中：</p>
+<p>$H_{c20}$–永磁体计算矫顽力（KA&#x2F;m）</p>
+<p>$\alpha_{Br}$–$B_{r20}$的温度系数（$%K^{-1}$）</p>
+<h3 id="9，永磁体相对回复磁导率"><a href="#9，永磁体相对回复磁导率" class="headerlink" title="9，永磁体相对回复磁导率"></a>9，永磁体相对回复磁导率</h3><p>$$\mu_r&#x3D;\frac{B_r}{\mu_0H_c}\times10^{-3}$$</p>
+<p>式中：</p>
+<p>$\mu_0$–$\mu_0&#x3D;4\pi\times10^{-7}$ H&#x2F;m</p>
+<h3 id="10，最高工作温度下退磁曲线的拐点"><a href="#10，最高工作温度下退磁曲线的拐点" class="headerlink" title="10，最高工作温度下退磁曲线的拐点"></a>10，最高工作温度下退磁曲线的拐点</h3><p>铁氧体为最低温度环境温度</p>
+<p>$b_k$</p>
+<h3 id="11，电枢铁心材料"><a href="#11，电枢铁心材料" class="headerlink" title="11，电枢铁心材料"></a>11，电枢铁心材料</h3><p>DR510-50</p>
+<h3 id="12，电负荷预估值（A-cm）"><a href="#12，电负荷预估值（A-cm）" class="headerlink" title="12，电负荷预估值（A&#x2F;cm）"></a>12，电负荷预估值（A&#x2F;cm）</h3><p>$A’$</p>
+<h3 id="13，气隙磁密预估值（T）"><a href="#13，气隙磁密预估值（T）" class="headerlink" title="13，气隙磁密预估值（T）"></a>13，气隙磁密预估值（T）</h3><p>$B’_\delta&#x3D;\left(0.60\sim0.85\right)B_r$</p>
+<h3 id="14，计算极弧系数"><a href="#14，计算极弧系数" class="headerlink" title="14，计算极弧系数"></a>14，计算极弧系数</h3><p>$\alpha_i&#x3D;0.6\sim0.75$</p>
+<h3 id="15，长径比预估值"><a href="#15，长径比预估值" class="headerlink" title="15，长径比预估值"></a>15，长径比预估值</h3><p>$\lambda&#x3D;0.6\sim1.5$</p>
+<h3 id="16，电枢直径（cm）"><a href="#16，电枢直径（cm）" class="headerlink" title="16，电枢直径（cm）"></a>16，电枢直径（cm）</h3><p>$$D_\alpha&#x3D;\sqrt[3]{\frac{6.1P’\times10^4}{\alpha_iA’B’_\delta n_N\lambda}}$$</p>
+<p>电枢直径算出来以后可以适当的取整</p>
+<h3 id="16，电枢长度（cm）"><a href="#16，电枢长度（cm）" class="headerlink" title="16，电枢长度（cm）"></a>16，电枢长度（cm）</h3><p>$$L_\alpha&#x3D;\lambda D_a$$</p>
+<p>电枢长度算出来以后可以适当的取整</p>
+<h3 id="17，极距（cm）"><a href="#17，极距（cm）" class="headerlink" title="17，极距（cm）"></a>17，极距（cm）</h3><p>$$\tau&#x3D;\frac{\pi D_a}{2p}$$</p>
+<h3 id="18，气隙长度（cm）"><a href="#18，气隙长度（cm）" class="headerlink" title="18，气隙长度（cm）"></a>18，气隙长度（cm）</h3><p>$\delta$</p>
+<h3 id="18，永磁磁极结构"><a href="#18，永磁磁极结构" class="headerlink" title="18，永磁磁极结构"></a>18，永磁磁极结构</h3><p>瓦片形</p>
+<h3 id="19，极弧系数"><a href="#19，极弧系数" class="headerlink" title="19，极弧系数"></a>19，极弧系数</h3><p>$\alpha_p$电磁场计算求得或查表</p>
+<h3 id="19，磁瓦圆心角（度）"><a href="#19，磁瓦圆心角（度）" class="headerlink" title="19，磁瓦圆心角（度）"></a>19，磁瓦圆心角（度）</h3><p>$\theta_p$</p>
+<p>瓦片形结构：</p>
+<p>$\theta_p&#x3D;\alpha_p\times180$</p>
+<h3 id="18，永磁体厚度（cm）"><a href="#18，永磁体厚度（cm）" class="headerlink" title="18，永磁体厚度（cm）"></a>18，永磁体厚度（cm）</h3><p>$h_M$</p>
+<h3 id="19，永磁体轴向长度（cm）"><a href="#19，永磁体轴向长度（cm）" class="headerlink" title="19，永磁体轴向长度（cm）"></a>19，永磁体轴向长度（cm）</h3><p>$L_M$</p>
+<p>对于钕铁硼永磁$L_M&#x3D;L_a$</p>
+<p>对于铁氧体永磁$L_M&#x3D;\left(1.1\sim1.2\right)L_a$</p>
+<h3 id="20，电枢计算长度（cm）"><a href="#20，电枢计算长度（cm）" class="headerlink" title="20，电枢计算长度（cm）"></a>20，电枢计算长度（cm）</h3><p>$L_{ef}$</p>
+<p>对于钕铁硼永磁 $L_{ef}&#x3D;L_\alpha+2\delta$</p>
+<p>对于铁氧体永磁 $L_{ef}&#x3D;\Delta L_\alpha^*\left(h_M+\delta\right)$</p>
+<p>其中$\Delta L_a^*$可由电磁场计算求得，或根据$\Delta L_m^*$和$h_M&#x2F;\delta$查表</p>
+<p>$\Delta L_m^*&#x3D;\frac{L_M-L_a}{h_M+\delta}$</p>
+<h3 id="21，永磁体内径（cm）"><a href="#21，永磁体内径（cm）" class="headerlink" title="21，永磁体内径（cm）"></a>21，永磁体内径（cm）</h3><p>$$D_{mi}&#x3D;D_a+2\delta+2h_p$$</p>
+<p>式中：</p>
+<p>$h_p$–</p>
+<h3 id="22，永磁体外径（cm）"><a href="#22，永磁体外径（cm）" class="headerlink" title="22，永磁体外径（cm）"></a>22，永磁体外径（cm）</h3><p>$$D_{mo}&#x3D;D_{mi}+2h_M$$</p>
+<h3 id="23，电枢圆周速度（m-s）"><a href="#23，电枢圆周速度（m-s）" class="headerlink" title="23，电枢圆周速度（m&#x2F;s）"></a>23，电枢圆周速度（m&#x2F;s）</h3><p>$$V_a&#x3D;\frac{\pi D_an_N}{6000}$$</p>
+<h3 id="24，机座材料"><a href="#24，机座材料" class="headerlink" title="24，机座材料"></a>24，机座材料</h3><p>铸钢</p>
+<h3 id="25，机座长度（cm）"><a href="#25，机座长度（cm）" class="headerlink" title="25，机座长度（cm）"></a>25，机座长度（cm）</h3><p>$$L_j&#x3D;\left(2.0\sim3.0\right)L_a$$</p>
+<h3 id="26，机座厚度（cm）"><a href="#26，机座厚度（cm）" class="headerlink" title="26，机座厚度（cm）"></a>26，机座厚度（cm）</h3><p>$$h_j&#x3D;\frac{\sigma \alpha_i \tau L_{ef}B’\delta}{2L_jB’_j}$$</p>
+<p>计算后对机座厚度可以适当取整</p>
+<p>式中：</p>
+<p>$B’_j$–初选机座轭磁密，一般$B’_j&#x3D;\left(1.5\sim1.8\right)T$，单位T</p>
+<p>$\sigma$–漏磁系数，对于小电机，一般可取$\sigma&#x3D;\sigma_0$，$\sigma_0&#x3D;k\left(\sigma_1+\sigma_2-1\right)$</p>
+<p>$\sigma_1$–极间漏磁系数，由电磁场计算求得或者查表</p>
+<p>$\sigma_2$–端部漏磁系数，$\sigma_2&#x3D;\frac{\sigma’<em>2}{L</em>{ef}}+1$</p>
+<p>$\sigma’_2$–端部漏磁计算系数，由电磁场计算求得或者查表</p>
+<p>$k$–经验修正系数</p>
+<h3 id="27，机座外径（cm）"><a href="#27，机座外径（cm）" class="headerlink" title="27，机座外径（cm）"></a>27，机座外径（cm）</h3><p>$$D_j&#x3D;D_{mo}+2h_j$$</p>
+<h2 id="三，电枢冲片及电枢绕组计算"><a href="#三，电枢冲片及电枢绕组计算" class="headerlink" title="三，电枢冲片及电枢绕组计算"></a>三，电枢冲片及电枢绕组计算</h2><h3 id="1，绕组型式"><a href="#1，绕组型式" class="headerlink" title="1，绕组型式"></a>1，绕组型式</h3><p>在小功率直流电动机中，两极的采用单叠绕组，多极的采用单波绕组</p>
+<h3 id="2，绕组并联支路对数"><a href="#2，绕组并联支路对数" class="headerlink" title="2，绕组并联支路对数"></a>2，绕组并联支路对数</h3><p>单叠绕组a&#x3D;p，单波绕组a&#x3D;1</p>
+<h3 id="3，槽数"><a href="#3，槽数" class="headerlink" title="3，槽数"></a>3，槽数</h3><p>Q</p>
+<h3 id="4，槽距（cm）"><a href="#4，槽距（cm）" class="headerlink" title="4，槽距（cm）"></a>4，槽距（cm）</h3><p>$t_2&#x3D;\frac{\pi D_a}{Q}$</p>
+<h3 id="5，预计满载气隙磁通（Wb）"><a href="#5，预计满载气隙磁通（Wb）" class="headerlink" title="5，预计满载气隙磁通（Wb）"></a>5，预计满载气隙磁通（Wb）</h3><p>$$\Phi’_\delta&#x3D;\alpha_i\tau L_efB’_\delta\times10^{-4}$$</p>
+<h3 id="6，预计导体总数"><a href="#6，预计导体总数" class="headerlink" title="6，预计导体总数"></a>6，预计导体总数</h3><p>$$N’&#x3D;\frac{60aE_a}{p\Phi’_\delta n_N}$$</p>
+<h3 id="7，每槽导体数"><a href="#7，每槽导体数" class="headerlink" title="7，每槽导体数"></a>7，每槽导体数</h3><p>$$N’_s&#x3D;\frac{N’}{Q}$$</p>
+<h3 id="8，每槽元件数"><a href="#8，每槽元件数" class="headerlink" title="8，每槽元件数"></a>8，每槽元件数</h3><p>u</p>
+<h3 id="9，每元件匝数"><a href="#9，每元件匝数" class="headerlink" title="9，每元件匝数"></a>9，每元件匝数</h3><p>$$W’_s&#x3D;\frac{N’_s}{2u}$$</p>
+<p>计算后将匝数取整</p>
+<h3 id="10，实际每槽导体数"><a href="#10，实际每槽导体数" class="headerlink" title="10，实际每槽导体数"></a>10，实际每槽导体数</h3><p>$$N_s&#x3D;2uW_s$$</p>
+<h3 id="11，实际导体总数"><a href="#11，实际导体总数" class="headerlink" title="11，实际导体总数"></a>11，实际导体总数</h3><p>$$N&#x3D;QN_s$$</p>
+<h3 id="12，换向片数"><a href="#12，换向片数" class="headerlink" title="12，换向片数"></a>12，换向片数</h3><p>$$K&#x3D;uQ$$</p>
+<h3 id="13，实际电负荷（A-cm）"><a href="#13，实际电负荷（A-cm）" class="headerlink" title="13，实际电负荷（A&#x2F;cm）"></a>13，实际电负荷（A&#x2F;cm）</h3><p>$$A&#x3D;\frac{NI_N}{2\pi aD_a}$$</p>
+<h3 id="14，支路电流（A）"><a href="#14，支路电流（A）" class="headerlink" title="14，支路电流（A）"></a>14，支路电流（A）</h3><p>$$I_a&#x3D;\frac{I_N}{2a}$$</p>
+<h3 id="15，预计电枢电流密度（-A-mm-2-）"><a href="#15，预计电枢电流密度（-A-mm-2-）" class="headerlink" title="15，预计电枢电流密度（$A&#x2F;mm^2$）"></a>15，预计电枢电流密度（$A&#x2F;mm^2$）</h3><p>$J’_2$，一般选取$J’_2&#x3D;5\sim13A&#x2F;mm^2$</p>
+<h3 id="16，预计导线截面积（-mm-2-）"><a href="#16，预计导线截面积（-mm-2-）" class="headerlink" title="16，预计导线截面积（$mm^2$）"></a>16，预计导线截面积（$mm^2$）</h3><p>$$A’_{Cua}&#x3D;\frac{I_a}{J’_2}$$</p>
+<p>根据此截面积选用截面积相近的铜线规格</p>
+<h3 id="17，并绕根线"><a href="#17，并绕根线" class="headerlink" title="17，并绕根线"></a>17，并绕根线</h3><p>$N_t$</p>
+<h3 id="18，导线裸线线径（mm）"><a href="#18，导线裸线线径（mm）" class="headerlink" title="18，导线裸线线径（mm）"></a>18，导线裸线线径（mm）</h3><p>$d_i$</p>
+<h3 id="19，导线绝缘后线径（mm）"><a href="#19，导线绝缘后线径（mm）" class="headerlink" title="19，导线绝缘后线径（mm）"></a>19，导线绝缘后线径（mm）</h3><p>d</p>
+<h3 id="20，实际导线截面积（-mm-2-）"><a href="#20，实际导线截面积（-mm-2-）" class="headerlink" title="20，实际导线截面积（$mm^2$）"></a>20，实际导线截面积（$mm^2$）</h3><p>$$A_{Aua}&#x3D;\frac{\pi}{4}N_td_i^2$$</p>
+<h3 id="21，实际电枢电流密度（-A-mm-2-）"><a href="#21，实际电枢电流密度（-A-mm-2-）" class="headerlink" title="21，实际电枢电流密度（$A&#x2F;mm^2$）"></a>21，实际电枢电流密度（$A&#x2F;mm^2$）</h3><p>$$J_2$$</p>
+<h3 id="22，实际热负荷（-A-left-cm-cdot-mm-2-right-）"><a href="#22，实际热负荷（-A-left-cm-cdot-mm-2-right-）" class="headerlink" title="22，实际热负荷（$A&#x2F;\left(cm\cdot mm^2\right)$）"></a>22，实际热负荷（$A&#x2F;\left(cm\cdot mm^2\right)$）</h3><p>$AJ_2$</p>
+<h3 id="23，槽型选择"><a href="#23，槽型选择" class="headerlink" title="23，槽型选择"></a>23，槽型选择</h3><p>半梨形槽</p>
+<h3 id="24，槽口宽度（cm）"><a href="#24，槽口宽度（cm）" class="headerlink" title="24，槽口宽度（cm）"></a>24，槽口宽度（cm）</h3><p>$b_{02}$</p>
+<h3 id="24，槽口高度（cm）"><a href="#24，槽口高度（cm）" class="headerlink" title="24，槽口高度（cm）"></a>24，槽口高度（cm）</h3><p>$h_{02}$</p>
+<h3 id="25，槽上部半径（cm）"><a href="#25，槽上部半径（cm）" class="headerlink" title="25，槽上部半径（cm）"></a>25，槽上部半径（cm）</h3><p>$r_{21}$</p>
+<h3 id="26，槽下部半径（cm）"><a href="#26，槽下部半径（cm）" class="headerlink" title="26，槽下部半径（cm）"></a>26，槽下部半径（cm）</h3><p>$r_{22}$</p>
+<h3 id="27，槽上部倒角半径（cm）"><a href="#27，槽上部倒角半径（cm）" class="headerlink" title="27，槽上部倒角半径（cm）"></a>27，槽上部倒角半径（cm）</h3><p>$r_{23}$</p>
+<h3 id="28，槽上部高度（cm）"><a href="#28，槽上部高度（cm）" class="headerlink" title="28，槽上部高度（cm）"></a>28，槽上部高度（cm）</h3><p>$h_2$</p>
+<p>对于梨形槽，可取$h_2&#x3D;r_{21}$</p>
+<p>对于半梨形槽，可取$h_2&#x3D;r_{23}$</p>
+<h3 id="29，槽上部宽度（cm）"><a href="#29，槽上部宽度（cm）" class="headerlink" title="29，槽上部宽度（cm）"></a>29，槽上部宽度（cm）</h3><p>$d_1$</p>
+<h3 id="30，槽中部高度（cm）"><a href="#30，槽中部高度（cm）" class="headerlink" title="30，槽中部高度（cm）"></a>30，槽中部高度（cm）</h3><p>$h_{22}$</p>
+<h3 id="31，槽下部宽度（cm）"><a href="#31，槽下部宽度（cm）" class="headerlink" title="31，槽下部宽度（cm）"></a>31，槽下部宽度（cm）</h3><p>$d_2$</p>
+<h3 id="32，槽上部倒角圆心距（cm）"><a href="#32，槽上部倒角圆心距（cm）" class="headerlink" title="32，槽上部倒角圆心距（cm）"></a>32，槽上部倒角圆心距（cm）</h3><p>$d_3$</p>
+<h3 id="33，槽高（cm）"><a href="#33，槽高（cm）" class="headerlink" title="33，槽高（cm）"></a>33，槽高（cm）</h3><p>$h_{t2}$</p>
+<h3 id="34，齿宽（cm）"><a href="#34，齿宽（cm）" class="headerlink" title="34，齿宽（cm）"></a>34，齿宽（cm）</h3><p>$b_{t2}$</p>
+<p>齿上部宽度（cm）：</p>
+<p>$$b_{t21}&#x3D;\frac{\pi\left(D_a-2h_{02}-2h_2\right)}{Q}-d_1$$</p>
+<p>齿下部宽度（cm）：</p>
+<p>$$b_{t22}&#x3D;\frac{\pi\left(D_a-2h_{t2}+2r_{22}\right)}{Q}-2r_{22}$$</p>
+<p>若$b_{t21}\gt b_{t22}$，则$b_{r2}&#x3D;\frac{b_{t21}+2b_{t22}}{3}$</p>
+<p>若$b_{t22}\gt b_{t21}$，则$b_{r2}&#x3D;\frac{b_{t22}+2b_{t21}}{3}$</p>
+<h3 id="35，槽净面积（-cm-2-）"><a href="#35，槽净面积（-cm-2-）" class="headerlink" title="35，槽净面积（$cm^2$）"></a>35，槽净面积（$cm^2$）</h3><p>1）梨形槽</p>
+<p>$$A_s&#x3D;\frac{\pi}{2}\left(r_{21}^2+r_{22}^2\right)+h_{22}\left(r_{21}+r_{22}\right)-C_i\left[\pi \left(r_{21}+r_{22}\right)+2h_{22}\right] $$</p>
+<p>2）半梨形槽</p>
+<p>$$A_s&#x3D;\frac{\pi}{2}\left(r_{22}^2+r_{23}^2\right)+\frac{1}{2}h_{22}\left(d_1+2r_{22}\right)+r_{23}d_3-C_i\left[\pi r_{22}+2h_{22}+d_1\right] $$</p>
+<p>3）圆形槽</p>
+<p>$$A_s&#x3D;\pi r_{21}^2$$</p>
+<p>4）矩形槽</p>
+<p>5）斜肩圆底槽</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Written by:  </strong>qiu
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://www.lfalc.com/2025/03/03/25030303/" title="永磁直流电机设计">http://www.lfalc.com/2025/03/03/25030303/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/motor-%E6%B0%B8%E7%A3%81%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA/" rel="tag"># -motor -永磁直流电机</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/03/03/25030302/" rel="prev" title="设计电机">
+                  <i class="fa fa-angle-left"></i> 设计电机
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2024 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder" > <a target="_blank" rel="noopener" href="https://github.com/claccck" style="text-decoration: none;">claccck</a> </span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
