@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.lfalc.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"remove","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文记录了电机设计中的基本电磁定律">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电机中的基本电磁定律">
+<meta property="og:url" content="http://www.lfalc.com/2025/07/12/2503161403/index.html">
+<meta property="og:site_name" content="百草园">
+<meta property="og:description" content="本文记录了电机设计中的基本电磁定律">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-07-12T15:15:34.000Z">
+<meta property="article:modified_time" content="2025-07-12T02:43:25.771Z">
+<meta property="article:author" content="claccck">
+<meta property="article:tag" content="motor">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.lfalc.com/2025/07/12/2503161403/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://www.lfalc.com/2025/07/12/2503161403/","path":"2025/07/12/2503161403/","title":"电机中的基本电磁定律"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>电机中的基本电磁定律 | 百草园</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      
+      <p class="site-title">百草园</p>
+      
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.lfalc.com/2025/07/12/2503161403/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="claccck">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="百草园">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="电机中的基本电磁定律 | 百草园">
+      <meta itemprop="description" content="本文记录了电机设计中的基本电磁定律">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          电机中的基本电磁定律
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-07-12 23:15:34 / Modified: 10:43:25" itemprop="dateCreated datePublished" datetime="2025-07-12T23:15:34+08:00">2025-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/motor/" itemprop="url" rel="index"><span itemprop="name">motor</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/motor/%E5%9F%BA%E6%9C%AC%E7%94%B5%E7%A3%81%E5%AE%9A%E5%BE%8B/" itemprop="url" rel="index"><span itemprop="name">基本电磁定律</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">本文记录了电机设计中的基本电磁定律</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="电机中的基本电磁定律"><a href="#电机中的基本电磁定律" class="headerlink" title="电机中的基本电磁定律"></a>电机中的基本电磁定律</h1><p>三个基本定律</p>
+<h2 id="1，全电流定律（安倍环路定律）"><a href="#1，全电流定律（安倍环路定律）" class="headerlink" title="1，全电流定律（安倍环路定律）"></a>1，全电流定律（安倍环路定律）</h2><p>磁场是由电流的激励产生的，磁场与产生该磁场的电流同时存在</p>
+<p>前提条件：在电机中，不存在运流电流，位移电流可以忽略不记</p>
+<p>设空间中有n根载流导体，导体中的电流分别是：$I_1,I_2\cdots I_n$，则沿任意可包含所有这些导体的闭合路径L，磁场强度$\vec H$的线积分就等于这些导体的代数和</p>
+<p>$$\oint_l\vec H\cdot d\vec l&#x3D;\sum_{i&#x3D;1}^{n}I_i$$</p>
+<p>电流的符号由右手螺旋法则确定，导体电流方向与积分路径方向呈右手螺旋关系时，电流为正，反之为负。</p>
+<h2 id="2，电磁感应定律"><a href="#2，电磁感应定律" class="headerlink" title="2，电磁感应定律"></a>2，电磁感应定律</h2><p>![[Pasted image 20250315144538.png]]</p>
+<p>匝数为N的线圈置于磁场之中，与线圈交链的磁链为$\psi$，无论发生了什么（线圈与磁场发生相对位移或者磁场本身发生变化），只要$\psi$发生了变化，线圈内就会产生感应电流，该电流倾向于阻止$\psi$的变化，电流方向与磁通方向符合右手螺旋法则。</p>
+<p>电磁感应的数学描述为：</p>
+<p>$$e&#x3D;-N\frac{\partial \phi}{\partial t}-Nv\frac{\partial \phi}{\partial x}&#x3D;e_T+e_v$$</p>
+<p>式中：</p>
+<p>$e_T$–变压器电动势，由于磁场本身变化产生的电流</p>
+<p>$e_v$–运动电动势，由于线圈与磁场之间相对运动产生的电流</p>
+<p>（1）变压器电势</p>
+<p>电机学中计算变压器电动势的一般化公式：$E&#x3D;\sqrt 2\pi fN\phi_m&#x3D;4.44fN\phi_m$</p>
+<p>![[Pasted image 20250316134404.png]]</p>
+<p>（2）运动电动势</p>
+<p>运动电动势的计算：</p>
+<p>恒定磁场B，仅在长度$l$范围内沿$\zeta$方向按$B\left(\zeta\right)$规律分布</p>
+<p>N匝线圈在恒定磁场中以速度v沿着$\zeta$方向运动，线圈两边平行，但与$\zeta$垂直，宽度为b，有效长度亦为l，距离原点x</p>
+<p>![[Pasted image 20250316134448.png]]</p>
+<p>任意时刻穿过线圈的磁通为：</p>
+<p>$$\phi&#x3D;l\int_x^{x+b}B_n\left(\zeta\right)\mathrm d\zeta$$</p>
+<p>线圈内产生的感应电动势即运动电动势为：</p>
+<p>$$e&#x3D;e_v&#x3D;-Nvl\left[B_n\left(x\right)-B_n\left(x+b\right)\right]&#x3D;N\Delta B_nlv$$</p>
+<p>式中，磁场$B_n$、线圈运动速度v和感应电动势e之间由右手定则确定。 </p>
+<p>提高运动电动势的方法：</p>
+<p>（1）$B$垂直于$\Phi$平面，增加了L的长度</p>
+<p>（2）$\Delta B_n$很大，意味着在电机设计过程中，通电导体的正负刚好分别通过磁体的NS极</p>
+<h2 id="3，电磁力定律"><a href="#3，电磁力定律" class="headerlink" title="3，电磁力定律"></a>3，电磁力定律</h2><p>电磁力：</p>
+<p>长度为l的导体通入电流i后置于磁场B中，导体会受到力的作用，称为电磁力，计算公式为：</p>
+<p>$$F&#x3D;\sum\mathrm d\vec F&#x3D;i\sum\mathrm dl\times\vec B$$</p>
+<p>对于通电长载流导体，若磁场与之垂直，计算电磁力的大小可以简化为（毕奥-萨伐电磁力定律）：</p>
+<p>$$F&#x3D;Bli$$</p>
+<p>电磁力F，磁场强度B以及导体长度l之间的关系满足左手定则（左力右电）</p>
+<p>磁场与载流导体互相垂直时，电磁力最大（电机可逆性原理）</p>
+<p>电磁转矩：</p>
+<p>设转子半径为$r$，单根导体产生的电磁转矩为：</p>
+<p>$$T_s&#x3D;Fr&#x3D;Blir$$<br>对于N匝线圈，设线圈两侧所在的磁场分别是$B_1$和$B_2$，则有：</p>
+<p>$$T_c&#x3D;Nlir(B_1-B2)$$</p>
+<p>若需要获得最大电磁转矩，则需要使得$B_1\equiv -B_2$，线圈两侧处磁场大小恒相等，极性恒相反</p>
+<p>电机的最大可能转矩为：</p>
+<p>$$T_{em}&#x3D;\sum_{j&#x3D;1}^MT_{cj}&#x3D;MNBliD$$</p>
+<p>式中：</p>
+<p>M–总线圈个数</p>
+<p>D–转子直径</p>
+<p>电磁转矩还可以通过功率关系求得，设P为电机的电磁功率，$\Omega$为电机气隙磁场旋转的角速度，则：</p>
+<p>$$T_{em}&#x3D;\frac{P}{\Omega}$$</p>
+<p>式中，功率P可以为输入功率，也可以为输出功率，自然转矩也有了输入输出之分</p>
+<p>电磁转矩在电动机中是输出转矩，将电能转换为机械能，在发电机中需要克服电磁转矩进行做功，将机械能转换为电能</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Written by:  </strong>qiu
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="http://www.lfalc.com/2025/07/12/2503161403/" title="电机中的基本电磁定律">http://www.lfalc.com/2025/07/12/2503161403/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/motor/" rel="tag"># motor</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/03/03/2503030300/" rel="prev" title="永磁直流电机设计">
+                  <i class="fa fa-angle-left"></i> 永磁直流电机设计
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2024 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder" > <a target="_blank" rel="noopener" href="https://github.com/claccck" style="text-decoration: none;">claccck</a> </span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
